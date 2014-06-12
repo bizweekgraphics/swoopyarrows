@@ -3,6 +3,8 @@ swoopyarrows.js
 
 Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things.
 
+It is a very simple function, not a closure or whatever. It currently depends on jQuery *and* D3 and returns a D3 reference. Obviously all that sucks so maybe I'll spruce it up a little before ~~dumping~~ publicizing.
+
 ### `drawArrow(parent, from, to, degrees, clockwise)`
   
 **parent** — the svg container or element to which to append the arrow
@@ -18,6 +20,8 @@ Finally an open source project to match the scope of our ambition! **swoopyarrow
   - pass 0 or 360 for a straight arrow.
 
 **clockwise** — boolean determining whether arrow will swoop clockwise (true) or counterclockwise (false).
+
+---
 
 > ### Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to no one ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
 
