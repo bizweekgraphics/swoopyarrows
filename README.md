@@ -8,6 +8,7 @@ It is a very simple function, not a closure or whatever. It currently depends on
 ### `drawArrow(parent, from, to, degrees, clockwise)`
   
 **parent** — the svg container or element to which to append the arrow
+
 **from, to** — where to draw the arrow from and to, in any of four forms (in any mix):
   - a DOM element:            `document.getElementById("hed")`
   - a jQuery element:         `$("#hed")`
