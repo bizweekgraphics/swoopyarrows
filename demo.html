@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+
+  <svg>
+    <defs>
+      <!-- arrowhead for arrows -->
+      <marker id = "arrowhead" viewBox = "-10 -10 20 20" refX = "0" refY = "0" markerWidth = "20" markerHeight = "20" stroke-width = "1" orient = "auto">
+        <polyline class="arrow" stroke-linejoin="bevel" points="-6.72,-6.749 0.54,0 -6.72,6.749 "/>
+      </marker>
+    </defs>
+
+    <rect x="400" y="500" width="50" height="50" fill="#000000"/>
+
+  </svg>
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="swoopyarrows.js"></script>
+
+  <script>
+    // draw sample arrow from page element to cursor
+    var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
+    $(document).on("mousemove", function(e) {
+      mouseArrow.remove();
+      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [e.pageX,e.pageY], 90, true);
+    });
+  </script>
+
+</body>
+</html>
