@@ -39,6 +39,7 @@ function drawArrow(parent, from, to, degrees, clockwise) {
   // gets from the sides of a bounding rect (left, right, top, bottom)
   //      to its corners (topleft, topright, bottomleft, bottomright)
   function edgesToCorners(element) {
+    console.log(element.getBoundingClientRect());
     var corners = [];
     ["left","right"].forEach(function(i) { ["top","bottom"].forEach(function(j) { corners.push({"x":i,"y":j}); }); });
     return corners.map(function(corner) {
