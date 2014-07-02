@@ -27,9 +27,12 @@ function drawArrow(parent, from, to, degrees, clockwise) {
     } else if(element.nodeType) {
       //a DOM element was directly passed in
       return edgesToCorners(element);
-    } else {
-      //assume it's a D3 element (sloppy, yes)
+    } else if(element instanceof d3.selection) {
+      //a D3 element was passed in
       return edgesToCorners(element[0][0]);
+    } else {
+      //element passed in isn't recognizably of a supported type
+      return false;
     }
   }
 
@@ -47,12 +50,12 @@ function drawArrow(parent, from, to, degrees, clockwise) {
   var fromCorners = getCorners(from),
       toCorners = getCorners(to),
       fromClosest, toClosest, d;
-  
+
   // this seems good to have
   function distance(from, to) {
     return Math.sqrt(Math.pow(to.x-from.x,2)+Math.pow(to.y-from.y,2));
   }
-  
+
   // check all possible combinations of eligible endpoints for the shortest distance
   fromCorners.forEach(function(fromVal) {
     toCorners.forEach(function(toVal) {
