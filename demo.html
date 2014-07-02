@@ -10,20 +10,19 @@
       </marker>
     </defs>
 
-    <rect x="400" y="500" width="50" height="50" fill="#000000"/>
+    <rect x="200" y="300" width="50" height="50" fill="#000000"/>
 
   </svg>
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="swoopyarrows.js"></script>
 
   <script>
     // draw sample arrow from page element to cursor
     var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
-    $(document).on("mousemove", function(e) {
+    d3.select("body").on("mousemove", function(e) {
       mouseArrow.remove();
-      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [e.pageX,e.pageY], 90, true);
+      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), d3.mouse(d3.select("body")[0][0]), 90, true);
     });
   </script>
 
