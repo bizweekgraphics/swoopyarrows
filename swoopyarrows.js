@@ -16,23 +16,32 @@ function drawArrow(parent, from, to, degrees, clockwise) {
 
   // ZEROTH, figure out which points to draw between, for when from and to are spatially-extended elements
 
+  // given a DOM element, jQuery element, or D3 selection, return a DOM element
+  function getDOMElement(element) {
+    if(element.nodeType) {
+      // a DOM element was directly passed in
+      return element;
+    } else if(element.jquery) {
+      // a jquery element was passed in; convert to DOM element
+      return element[0];
+    } else if(element instanceof d3.selection) {
+      // a D3 element was passed in
+      return element[0][0];
+    } else {
+      // element passed in isn't recognizably of a supported type
+      return false;
+    }
+  }
+
   // "corners" are coordinates of points that are eligible to be connected
   function getCorners(element) {
     if(element instanceof Array && !element.data) {
-      //an array hopefully containing [x,y] was passed in
+      // an array hopefully containing [x,y] was passed in
       return [{"x":element[0],"y":element[1]}];
-    } else if(element.jquery) {
-      //a jquery element was passed in; convert to DOM element
-      return edgesToCorners(element[0]);
-    } else if(element.nodeType) {
-      //a DOM element was directly passed in
-      return edgesToCorners(element);
-    } else if(element instanceof d3.selection) {
-      //a D3 element was passed in
-      return edgesToCorners(element[0][0]);
     } else {
-      //element passed in isn't recognizably of a supported type
-      return false;
+      // something else was passed in (DOM element, jQuery element, D3 selection...);
+      // attempt to normalize to DOM element and get corners
+      return edgesToCorners(getDOMElement(element));
     }
   }
 
@@ -69,7 +78,9 @@ function drawArrow(parent, from, to, degrees, clockwise) {
 
   from = fromClosest;
   to = toClosest;
-  offset = parent[0][0].getBoundingClientRect();
+
+  parent = getDOMElement(parent);
+  offset = parent.getBoundingClientRect();
 
   /*
   FIRST, compute radius of circle from desired degrees for arc to subtend.
@@ -101,7 +112,7 @@ function drawArrow(parent, from, to, degrees, clockwise) {
   var path = "M " + (from.x-offset.left) + " " + (from.y-offset.top) + " a " + r + " " + r + " 0 0 "+(clockwise ? "1" : "0")+" " + (to.x-from.x) + " " + (to.y-from.y);
 
   // append path to given {parent} (with class .arrow)
-  var arrow = parent.append("path")
+  var arrow = d3.select(parent).append("path")
     .attr("d", path)
     .attr("marker-end", "url(#arrowhead)")
     .attr("class", "arrow");
