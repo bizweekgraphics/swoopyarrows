@@ -39,7 +39,6 @@ function drawArrow(parent, from, to, degrees, clockwise) {
   // gets from the sides of a bounding rect (left, right, top, bottom)
   //      to its corners (topleft, topright, bottomleft, bottomright)
   function edgesToCorners(element) {
-    console.log(element.getBoundingClientRect());
     var corners = [];
     ["left","right"].forEach(function(i) { ["top","bottom"].forEach(function(j) { corners.push({"x":i,"y":j}); }); });
     return corners.map(function(corner) {
@@ -70,6 +69,7 @@ function drawArrow(parent, from, to, degrees, clockwise) {
 
   from = fromClosest;
   to = toClosest;
+  offset = parent[0][0].getBoundingClientRect();
 
   /*
   FIRST, compute radius of circle from desired degrees for arc to subtend.
@@ -98,7 +98,7 @@ function drawArrow(parent, from, to, degrees, clockwise) {
     read up: http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
     example: <path d = "M 200 50 a 90 90 0 0 1 100 0"/>
   */
-  var path = "M " + from.x + " " + from.y + " a " + r + " " + r + " 0 0 "+(clockwise ? "1" : "0")+" " + (to.x-from.x) + " " + (to.y-from.y);
+  var path = "M " + (from.x-offset.left) + " " + (from.y-offset.top) + " a " + r + " " + r + " 0 0 "+(clockwise ? "1" : "0")+" " + (to.x-from.x) + " " + (to.y-from.y);
 
   // append path to given {parent} (with class .arrow)
   var arrow = parent.append("path")
