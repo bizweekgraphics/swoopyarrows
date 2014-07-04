@@ -14,8 +14,6 @@ svg { margin: 20px; }
     <rect x="0" y="0" width="50" height="50" fill="#000000"/>
   </svg>
 
-  <h1>Hello wrrrld</h1>
-
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="swoopyarrows.js"></script>
 
@@ -24,7 +22,7 @@ svg { margin: 20px; }
     var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
     d3.select("body").on("mousemove", function(e) {
       mouseArrow.remove();
-      mouseArrow = drawArrow(d3.select("svg"), d3.select("h1"), d3.mouse(d3.select("html")[0][0]), 90, true);
+      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), d3.mouse(d3.select("html")[0][0]), 90, true);
     });
   </script>
 
