@@ -35,6 +35,7 @@ svg { margin: 20px; }
     var svg = d3.select("svg").call(swoop);
 
     d3.select("body").on("mousemove", function(e) {
+      swoop.to(d3.mouse(d3.select("html")[0][0]));
       svg.call(swoop);
     });
 

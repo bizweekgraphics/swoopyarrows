@@ -59,11 +59,13 @@ function swoopyArrow() {
       */
       var path = "M " + (fromClosest.x-offset.left) + " " + (fromClosest.y-offset.top) + " a " + r + " " + r + " 0 0 "+(clockwise ? "1" : "0")+" " + (toClosest.x-fromClosest.x) + " " + (toClosest.y-fromClosest.y);
 
-      // append path to given {parent} (with class .arrow)
-      var arrow = d3.select(parent).append("path")
-        .attr("d", path)
-        .attr("marker-end", "url(#arrowhead)")
-        .attr("class", "arrow");
+      if(d3.select(parent).select("path.arrow").empty()) {
+        d3.select(parent)
+          .append("path")
+            .attr("marker-end", "url(#arrowhead)")
+            .attr("class", "arrow");
+      }
+      d3.select(parent).select("path.arrow").attr("d", path)
 
       // if not already defined, define arrowhead marker
       if(d3.select("defs marker#arrowhead").empty()) {
