@@ -1,3 +1,21 @@
+function swoopyArrow() {
+
+  // "private" variables
+
+  // drawing function, to be returned
+  function arrow(selection) {
+    // typically selection will just be one group with no data, a la d3 svg axes?
+    selection.each(function (data) {
+      // (re)draw arrow
+    });
+  }
+
+  // getter/setters
+
+  // return drawing function
+  return arrow;
+}
+
 function drawArrow(parent, from, to, degrees, clockwise) {
   /*
   PARAMETERS:
