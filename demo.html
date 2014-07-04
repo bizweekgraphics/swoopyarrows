@@ -19,11 +19,25 @@ svg { margin: 20px; }
 
   <script>
     // draw sample arrow from page element to cursor
-    var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
+    // var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
+    // d3.select("body").on("mousemove", function(e) {
+    //   mouseArrow.remove();
+    //   mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), d3.mouse(d3.select("html")[0][0]), 90, true);
+    // });
+
+    swoop = swoopyArrow()
+      .parent(d3.select("svg"))
+      .from(d3.select("rect"))
+      .to([300,400])
+      .degrees(120)
+      .clockwise(true);
+
+    var svg = d3.select("svg").call(swoop);
+
     d3.select("body").on("mousemove", function(e) {
-      mouseArrow.remove();
-      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), d3.mouse(d3.select("html")[0][0]), 90, true);
+      svg.call(swoop);
     });
+
   </script>
 
 </body>
