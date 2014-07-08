@@ -8,11 +8,12 @@ function swoopyArrow() {
       clockwise = true;
 
   // drawing function, to be returned
+  // typically selection will just be one group with no data, a la d3 svg axes?
   function arrow(selection) {
-    // typically selection will just be one group with no data, a la d3 svg axes?
+    // (re)draw arrow
     selection.each(function (data) {
-      // (re)draw arrow
 
+      // get eligible candidate anchor points, from which we'll select the closest two
       var fromCorners = getCorners(from),
           toCorners = getCorners(to),
           fromClosest, toClosest, d;
@@ -28,7 +29,10 @@ function swoopyArrow() {
         });
       });
 
-      offset = parent.getBoundingClientRect();
+      // find offsets to correct for, y'know, conflicting reference frames or w/e
+      svgOffset = parent.getBoundingClientRect();
+      pageOffset = { "top": window.pageYOffset || document.documentElement.scrollTop,
+                     "left": window.pageXOffset || document.documentElement.scrollLeft };
 
       /*
       FIRST, compute radius of circle from desired degrees for arc to subtend.
@@ -43,7 +47,7 @@ function swoopyArrow() {
       degrees = Math.min(degrees, 359);
 
       // get the chord length ("height" {h}) between points, by pythagorus
-      var h = Math.sqrt(Math.pow((toClosest.x-fromClosest.x),2)+Math.pow((toClosest.y-fromClosest.y),2));
+      var h = Math.sqrt(Math.pow((toClosest.x-fromClosest.x-pageOffset.left),2)+Math.pow((toClosest.y-fromClosest.y-pageOffset.top),2));
 
       // get the distance at which chord of height h subtends {angle} degrees
       var radians = degrees * Math.PI/180;
@@ -55,9 +59,20 @@ function swoopyArrow() {
       /*
       SECOND, compose the corresponding SVG arc.
         read up: http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
-        example: <path d = "M 200 50 a 90 90 0 0 1 100 0"/>
+        example: <path d = "M 200,50 a 50,50 0 0,1 100,0"/>
+                            M 200,50                          Moves pen to (200,50);
+                                     a                        draws elliptical arc;
+                                       50,50                  following a degenerate ellipse, r1 == r2 == 50;
+                                                              i.e. a circle of radius 50;
+                                             0                with no x-axis-rotation (irrelevant for circles);
+                                               0,1            with large-axis-flag=0 and sweep-flag=1 (clockwise);
+                                                   100,0      to a point +100 in x and +0 in y, i.e. (300,50).
+
       */
-      var path = "M " + (fromClosest.x-offset.left) + " " + (fromClosest.y-offset.top) + " a " + r + " " + r + " 0 0 "+(clockwise ? "1" : "0")+" " + (toClosest.x-fromClosest.x) + " " + (toClosest.y-fromClosest.y);
+      var path = " M " + (fromClosest.x-svgOffset.left) + "," + (fromClosest.y-svgOffset.top)
+               + " a " + r + "," + r
+               + " 0 0," + (clockwise ? "1" : "0") + " "
+               + (toClosest.x-fromClosest.x-pageOffset.left) + "," + (toClosest.y-fromClosest.y-pageOffset.top);
 
       if(d3.select(parent).select("path.arrow").empty()) {
         d3.select(parent)
