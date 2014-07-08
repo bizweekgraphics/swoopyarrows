@@ -14,8 +14,21 @@
         var scale0 = this.__chart__ || scale,
             scale1 = this.__chart__ = scale.copy();
 
-        var ticks = tickValues == null ? scale1.ticks ? scale1.ticks.apply(scale1, tickArguments_) : scale1.domain() : tickValues,
-            tickFormat = tickFormat_ == null ? scale1.tickFormat ? scale1.tickFormat.apply(scale1, tickArguments_) : d3_identity : tickFormat_,
+        var ticks =
+              tickValues == null ?
+                scale1.ticks ?
+                  scale1.ticks.apply(scale1, tickArguments_)
+                  : scale1.domain()
+                : tickValues,
+
+
+            tickFormat =
+              tickFormat_ == null ?
+                scale1.tickFormat ?
+                  scale1.tickFormat.apply(scale1, tickArguments_)
+                  : d3_identity
+                : tickFormat_,
+
             tick = g.selectAll(".tick").data(ticks, scale1),
             tickEnter = tick.enter().insert("g", ".domain").attr("class", "tick").style("opacity", ε),
             tickExit = d3.transition(tick.exit()).style("opacity", ε).remove(),
