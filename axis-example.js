@@ -32,7 +32,8 @@
             tick = g.selectAll(".tick").data(ticks, scale1),
             tickEnter = tick.enter().insert("g", ".domain").attr("class", "tick").style("opacity", ε),
             tickExit = d3.transition(tick.exit()).style("opacity", ε).remove(),
-            tickUpdate = d3.transition(tick.order()).style("opacity", 1), tickTransform;
+            tickUpdate = d3.transition(tick.order()).style("opacity", 1),
+            tickTransform;
 
         var range = d3_scaleRange(scale1),
             path = g.selectAll(".domain").data([ 0 ]),
