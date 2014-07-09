@@ -20,14 +20,16 @@ Get or set where to draw the arrow from and to, in any of four forms (in any mix
 
 Get or set the angle which the arc of the arrow will subtend.
   - 90 for a gentle arc, 180 for a bigger swoop.
-  - beyond 180, it gets gentler again, because of the way SVG computes arc.
-  - pass 0 or 360 for a straight arrow.
+  - Beyond 180, it gets gentler again, because of the way SVG computes arc.
+  - Pass 0 or 360 for a straight arrow.
 
 <a href="#clockwise" name="clockwise">#</a> swoopyArrow.**clockwise**([*boolean*]) 
 
 Get or set boolean determining whether arrow will swoop clockwise (true) or counterclockwise (false).
 
 ---
+
+Welp, that's it for now! 
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
 
