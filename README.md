@@ -18,7 +18,7 @@ var svg = d3.select("svg").call(swoop);
 
 Create a new default swoopy arrow object.
 
-<a href="#swoopyArrow" name="swoopyArrow">#</a> **arrow**(*selection*)
+<a href="#arrow" name="arrow">#</a> **arrow**(*selection*)
 
 Apply the arrow to a selection, aka append it. Selection must be an SVG or G element.
 
