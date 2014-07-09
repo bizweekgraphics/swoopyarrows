@@ -1,7 +1,7 @@
 swoopyarrows.js
 ===============
 
-Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object.
+Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object, except sloppier and more confused.
 
 <a href="#swoopyArrow" name="swoopyArrow">#</a> **swoopyArrow**()
 
@@ -29,7 +29,7 @@ Get or set boolean determining whether arrow will swoop clockwise (true) or coun
 
 ---
 
-Welp, that's it for now! 
+Welp, that's it for now! Feel free to check out our many [issues](https://github.com/bizweekgraphics/swoopyarrows/issues) and [laugh in my face](https://twitter.com/tophtucker).
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
 
