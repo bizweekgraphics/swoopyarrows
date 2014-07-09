@@ -1,9 +1,7 @@
 swoopyarrows.js
 ===============
 
-Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. 
-
-It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object.
+Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object.
 
 <a href="#swoopyArrow" name="swoopyArrow">#</a> **swoopyArrow**()
 
