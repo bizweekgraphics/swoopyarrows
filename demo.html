@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-body { margin: 10px; }
-svg { margin: 20px; }
+body { margin: 0px; }
+svg { margin: 20px; height: 2000px; width: 4000px; }
 .arrow {
   fill: none;
   stroke: black;
@@ -18,12 +18,23 @@ svg { margin: 20px; }
   <script src="swoopyarrows.js"></script>
 
   <script>
-    // draw sample arrow from page element to cursor
-    var mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), [300,300], 120, true);
+
+    // set up new arrow
+    swoop = swoopyArrow()
+      .from(d3.select("rect"))
+      .to([300,400])
+      .degrees(90)
+      .clockwise(true);
+
+    // draw sample arrow
+    var svg = d3.select("svg").call(swoop);
+
+    // on mousemove, update to run from page element to cursor
     d3.select("body").on("mousemove", function(e) {
-      mouseArrow.remove();
-      mouseArrow = drawArrow(d3.select("svg"), d3.select("rect"), d3.mouse(d3.select("html")[0][0]), 90, true);
+      swoop.to(d3.mouse(d3.select("html")[0][0]));
+      svg.call(swoop);
     });
+
   </script>
 
 </body>
