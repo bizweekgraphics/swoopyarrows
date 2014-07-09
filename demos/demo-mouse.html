@@ -11,24 +11,21 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
 <body>
 
   <svg>
-    <rect x="50" y="0" width="50" height="50" fill="#000000"/>
-    <circle cx="75" cy="200" r="30" fill="#000000"/>
+    <rect x="250" y="250" width="50" height="50" fill="#000000"/>
   </svg>
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-  <script src="swoopyarrows.js"></script>
+  <script src="../swoopyarrows.js"></script>
 
   <script>
+
+    var svg = d3.select("svg");
 
     // set up new arrow
     swoop = swoopyArrow()
       .from(d3.select("rect"))
-      .to(d3.select("circle"))
       .degrees(90)
       .clockwise(false);
-
-    // draw sample arrow
-    var svg = d3.select("svg").call(swoop);
 
     // on mousemove, update to run from page element to cursor
     d3.select("body").on("mousemove", function(e) {
