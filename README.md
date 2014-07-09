@@ -44,7 +44,7 @@ Get or set boolean determining whether arrow will swoop clockwise (true) or coun
 
 ---
 
-Welp, that's it for now! Feel free to check out our many [issues](https://github.com/bizweekgraphics/swoopyarrows/issues) and [laugh in my face](https://twitter.com/tophtucker). There must be fundamentally better ways to do this, and I'll get there. Maybe.
+Welp, that's it for now! Feel free to check out our many [issues](https://github.com/bizweekgraphics/swoopyarrows/issues) and [laugh in my face](https://twitter.com/tophtucker). There must be fundamentally better ways to do this, and I'll get there. Maybe. With your help!
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
 
