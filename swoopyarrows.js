@@ -1,11 +1,13 @@
 function swoopyArrow() {
 
   // "private" variables
-  var parent = false,
-      from = false,
+  var from = false,
       to = false,
       degrees = 90,
-      clockwise = true;
+      clockwise = true,
+      parent = false,
+      path = false,
+      pathData = false;
 
   // drawing function, to be returned
   // typically selection will just be one group with no data, a la d3 svg axes?
@@ -73,38 +75,25 @@ function swoopyArrow() {
                                                    100,0      to a point +100 in x and +0 in y, i.e. (300,50).
 
       */
-      var path = " M " + (fromClosest.x-svgOffset.left) + "," + (fromClosest.y-svgOffset.top)
+      pathData =  "M " + (fromClosest.x-svgOffset.left) + "," + (fromClosest.y-svgOffset.top)
                + " a " + r + "," + r
                + " 0 0," + (clockwise ? "1" : "0") + " "
                + (toClosest.x-fromClosest.x-pageOffset.left) + "," + (toClosest.y-fromClosest.y-pageOffset.top);
 
+      // if it doesn't exist yet, define arrowhead marker
+      if(d3.select("defs marker#arrowhead").empty()) loadMarker(parent);
+
       // if it doesn't exist yet, append the path
-      if(d3.select(parent).select("path.arrow").empty()) {
-        d3.select(parent)
+      if(!path) {
+        path = d3.select(parent)
           .append("path")
             .attr("marker-end", "url(#arrowhead)")
             .attr("class", "arrow");
       }
-      // update the path
-      d3.select(parent).select("path.arrow").attr("d", path)
 
-      // if not already defined, define arrowhead marker
-      if(d3.select("defs marker#arrowhead").empty()) {
-        d3.select(parent).append("defs")
-          .append("marker")
-            .attr("id", "arrowhead")
-            .attr("viewBox", "-10 -10 20 20")
-            .attr("refX", 0)
-            .attr("refY", 0)
-            .attr("markerWidth", 20)
-            .attr("markerHeight", 20)
-            .attr("stroke-width", 1)
-            .attr("orient", "auto")
-          .append("polyline")
-            .classed("arrow", true)
-            .attr("stroke-linejoin", "bevel")
-            .attr("points", "-6.72,-6.749 0.54,0 -6.72,6.749");
-      }
+      // update the path
+      path.attr("d", pathData);
+
     });
   }
 
@@ -155,6 +144,23 @@ function swoopyArrow() {
     return Math.sqrt( Math.pow(a,2) + Math.pow(b,2) );
   }
 
+  function loadMarker(parent) {
+    d3.select(parent).append("defs")
+      .append("marker")
+        .attr("id", "arrowhead")
+        .attr("viewBox", "-10 -10 20 20")
+        .attr("refX", 0)
+        .attr("refY", 0)
+        .attr("markerWidth", 20)
+        .attr("markerHeight", 20)
+        .attr("stroke-width", 1)
+        .attr("orient", "auto")
+      .append("polyline")
+        .classed("arrow", true)
+        .attr("stroke-linejoin", "bevel")
+        .attr("points", "-6.72,-6.749 0.54,0 -6.72,6.749");
+  }
+
   // GETTERS & SETTERS
 
   arrow.from = function(_) {
@@ -180,6 +186,10 @@ function swoopyArrow() {
     clockwise = _;
     return arrow;
   };
+
+  arrow.pathData = function() {
+    return pathData;
+  }
 
   // return drawing function
   return arrow;
