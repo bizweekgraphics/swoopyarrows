@@ -52,8 +52,8 @@ function swoopyArrow() {
       // bound acceptable {degrees}, between 1 and 359
       degrees = Math.min(Math.max(degrees, 1), 359);
 
-      // get the chord length ("height" {h}) between points, by pythagorus
-      var h = Math.sqrt(Math.pow((toClosest.x-fromClosest.x-pageOffset.left),2)+Math.pow((toClosest.y-fromClosest.y-pageOffset.top),2));
+      // get the chord length ("height" {h}) between points
+      var h = hypotenuse(toClosest.x-fromClosest.x-pageOffset.left, toClosest.y-fromClosest.y-pageOffset.top)
 
       // get the distance at which chord of height h subtends {angle} degrees
       var radians = degrees * Math.PI/180;
