@@ -13,26 +13,28 @@ function swoopyArrow() {
     // (re)draw arrow
     selection.each(function (data) {
 
-      // get eligible candidate anchor points, from which we'll select the closest two
-      var fromCorners = getCorners(from),
-          toCorners = getCorners(to),
-          fromClosest, toClosest, d;
-
-      // check all possible combinations of eligible endpoints for the shortest distance
-      fromCorners.forEach(function(fromVal) {
-        toCorners.forEach(function(toVal) {
-          if(d==null || distance(fromVal,toVal)<d) {
-            d = distance(fromVal,toVal);
-            fromClosest = fromVal;
-            toClosest = toVal;
-          }
-        });
-      });
-
       // find offsets to correct for, y'know, conflicting reference frames or w/e
       svgOffset = parent.getBoundingClientRect();
       pageOffset = { "top": window.pageYOffset || document.documentElement.scrollTop,
                      "left": window.pageXOffset || document.documentElement.scrollLeft };
+
+      // get eligible candidate anchor points, from which we'll select the closest two
+      var fromCorners = getCorners(from),
+          toCorners = getCorners(to),
+          fromClosest, // for the selected candidate 'from' anchor
+          toClosest,   // for the selected candidate 'to' anchor
+          d;           // for the distance between the two selected candidates
+
+      // check all possible combinations of eligible endpoints for the shortest distance
+      fromCorners.forEach(function(from) {
+        toCorners.forEach(function(to) {
+          if(d == null || hypotenuse( to.x-from.x, to.y-from.y ) < d) {
+            d = hypotenuse( to.x-from.x, to.y-from.y );
+            fromClosest = from;
+            toClosest = to;
+          }
+        });
+      });
 
       /*
       FIRST, compute radius of circle from desired degrees for arc to subtend.
@@ -43,8 +45,7 @@ function swoopyArrow() {
       */
 
       // bound acceptable {degrees}, between 1 and 359
-      degrees = Math.max(degrees, 1);
-      degrees = Math.min(degrees, 359);
+      degrees = Math.min(Math.max(degrees, 1), 359);
 
       // get the chord length ("height" {h}) between points, by pythagorus
       var h = Math.sqrt(Math.pow((toClosest.x-fromClosest.x-pageOffset.left),2)+Math.pow((toClosest.y-fromClosest.y-pageOffset.top),2));
@@ -54,7 +55,7 @@ function swoopyArrow() {
       var d = h / ( 2 * Math.tan(radians/2) );
 
       // get the radius {r} of the circumscribed circle
-      var r = Math.sqrt(Math.pow(d,2)+Math.pow((h/2),2));
+      var r = hypotenuse(d, h/2)
 
       /*
       SECOND, compose the corresponding SVG arc.
@@ -145,8 +146,8 @@ function swoopyArrow() {
   }
 
   // this seems good to have
-  function distance(from, to) {
-    return Math.sqrt(Math.pow(to.x-from.x,2)+Math.pow(to.y-from.y,2));
+  function hypotenuse(a, b) {
+    return Math.sqrt( Math.pow(a,2) + Math.pow(b,2) );
   }
 
   // GETTERS & SETTERS
