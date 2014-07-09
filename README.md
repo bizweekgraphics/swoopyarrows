@@ -1,7 +1,7 @@
 swoopyarrows.js
 ===============
 
-Finally an [open source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. 
+Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. 
 
 It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object.
 
@@ -31,6 +31,6 @@ Get or set boolean determining whether arrow will swoop clockwise (true) or coun
 
 ---
 
-> Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to no one ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
+> Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
 
 — [Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint
