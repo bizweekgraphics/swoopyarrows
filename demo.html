@@ -18,10 +18,9 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
   <script src="swoopyarrows.js"></script>
 
   <script>
-  
+
     // set up new arrow
     swoop = swoopyArrow()
-      .parent(d3.select("svg"))
       .from(d3.select("rect"))
       .to([300,400])
       .degrees(90)

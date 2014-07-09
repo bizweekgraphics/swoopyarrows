@@ -13,6 +13,9 @@ function swoopyArrow() {
     // (re)draw arrow
     selection.each(function (data) {
 
+      // save this as parent
+      parent = this;
+
       // find offsets to correct for, y'know, conflicting reference frames or w/e
       svgOffset = parent.getBoundingClientRect();
       pageOffset = { "top": window.pageYOffset || document.documentElement.scrollTop,
@@ -75,12 +78,14 @@ function swoopyArrow() {
                + " 0 0," + (clockwise ? "1" : "0") + " "
                + (toClosest.x-fromClosest.x-pageOffset.left) + "," + (toClosest.y-fromClosest.y-pageOffset.top);
 
+      // if it doesn't exist yet, append the path
       if(d3.select(parent).select("path.arrow").empty()) {
         d3.select(parent)
           .append("path")
             .attr("marker-end", "url(#arrowhead)")
             .attr("class", "arrow");
       }
+      // update the path
       d3.select(parent).select("path.arrow").attr("d", path)
 
       // if not already defined, define arrowhead marker
@@ -151,17 +156,6 @@ function swoopyArrow() {
   }
 
   // GETTERS & SETTERS
-  /* var parent = false,
-      from = false,
-      to = false,
-      degrees = 90,
-      clockwise = true; */
-
-  arrow.parent = function(_) {
-    if (!arguments.length) return parent;
-    parent = getDOMElement(_);
-    return arrow;
-  };
 
   arrow.from = function(_) {
     if (!arguments.length) return from;
