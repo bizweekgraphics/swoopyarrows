@@ -16,7 +16,7 @@ var svg = d3.select("svg").call(swoop);
 ---
 <a href="#swoopyArrow" name="swoopyArrow">#</a> **swoopyArrow**()
 
-Create a new default swoopy arrow object.
+Create a new default swoopy arrow object (call it arrow), which in turn has the below functions.
 
 <a href="#arrow" name="arrow">#</a> **arrow**(*selection*)
 
