@@ -18,7 +18,8 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
   <script src="swoopyarrows.js"></script>
 
   <script>
-    // draw sample arrow from page element to cursor
+  
+    // set up new arrow
     swoop = swoopyArrow()
       .parent(d3.select("svg"))
       .from(d3.select("rect"))
@@ -26,8 +27,10 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
       .degrees(90)
       .clockwise(true);
 
+    // draw sample arrow
     var svg = d3.select("svg").call(swoop);
 
+    // on mousemove, update to run from page element to cursor
     d3.select("body").on("mousemove", function(e) {
       swoop.to(d3.mouse(d3.select("html")[0][0]));
       svg.call(swoop);
