@@ -11,7 +11,8 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
 <body>
 
   <svg>
-    <rect x="0" y="0" width="50" height="50" fill="#000000"/>
+    <rect x="50" y="0" width="50" height="50" fill="#000000"/>
+    <circle cx="75" cy="200" r="30" fill="#000000"/>
   </svg>
 
   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -22,9 +23,9 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
     // set up new arrow
     swoop = swoopyArrow()
       .from(d3.select("rect"))
-      .to([300,400])
+      .to(d3.select("circle"))
       .degrees(90)
-      .clockwise(true);
+      .clockwise(false);
 
     // draw sample arrow
     var svg = d3.select("svg").call(swoop);
