@@ -158,7 +158,7 @@ function swoopyArrow() {
       .append("polyline")
         .classed("arrow", true)
         .attr("stroke-linejoin", "bevel")
-        .attr("points", "-6.72,-6.749 0.54,0 -6.72,6.749");
+        .attr("points", "-6.75,-6.75 0,0 -6.75,6.75");
   }
 
   // GETTERS & SETTERS

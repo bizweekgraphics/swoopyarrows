@@ -28,8 +28,8 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
       .clockwise(false);
 
     // on mousemove, update to run from page element to cursor
-    d3.select("body").on("mousemove", function(e) {
-      swoop.to(d3.mouse(d3.select("html")[0][0]));
+    d3.select("html").on("mousemove", function(e) {
+      swoop.to(d3.mouse(this));
       svg.call(swoop);
     });
 
