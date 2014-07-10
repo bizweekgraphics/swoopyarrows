@@ -3,9 +3,8 @@ swoopyarrows.js
 
 <img src="https://photos-5.dropbox.com/t/0/AAB-T8AE7ycEkctV59JJnFiJgLlXOTr5sR01VwUkOa-xgQ/12/13934821/png/1024x768/3/1404882000/0/2/Screenshot%202014-07-08%2023.41.11.png/-IQdxTWdCmUryLzr4b35gaI_0onhwrENUMYVI11oMjk" width="150" align="right"> 
 
-> “Out of the crooked timber of JavaScript, no straight arrow was ever made.”
-
-— Immanuel Kant
+> “Out of the crooked timber of JavaScript, no straight arrow was ever made.”  
+*— Immanuel Kant*
 
 Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object, except sloppier and more confused. Example:
 ```javascript 
@@ -52,6 +51,5 @@ Get or set boolean determining whether arrow will swoop clockwise (true) or coun
 
 Welp, that's it for now! Feel free to check out our many [issues](https://github.com/bizweekgraphics/swoopyarrows/issues) and [laugh in my face](https://twitter.com/tophtucker). There must be fundamentally better ways to do this, and I'll get there. Maybe. With your help!
 
-> Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺
-
-— [Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint
+> Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
+— *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
