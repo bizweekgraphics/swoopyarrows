@@ -3,7 +3,7 @@ swoopyarrows.js
 
 <img src="https://photos-5.dropbox.com/t/0/AAB-T8AE7ycEkctV59JJnFiJgLlXOTr5sR01VwUkOa-xgQ/12/13934821/png/1024x768/3/1404882000/0/2/Screenshot%202014-07-08%2023.41.11.png/-IQdxTWdCmUryLzr4b35gaI_0onhwrENUMYVI11oMjk" width="150" align="right"> 
 
-> “Out of the crooked timber of JavaScript, no straight arrow was ever made.”  
+> Out of the crooked timber of JavaScript, no straight arrow was ever made.  
 *— Immanuel Kant*
 
 Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object, except sloppier and more confused. Example:
