@@ -29,7 +29,7 @@ svg { margin: 20px; height: 2000px; width: 4000px; }
 
     // on mousemove, update to run from page element to cursor
     d3.select("html").on("mousemove", function(e) {
-      swoop.to(d3.mouse(this));
+      swoop.to(d3.mouse(this)).degrees(swoop.degrees()-1);
       svg.call(swoop);
     });
 
