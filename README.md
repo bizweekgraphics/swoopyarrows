@@ -53,3 +53,5 @@ Welp, that's it for now! Feel free to check out our many [issues](https://github
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
+
+([see also](http://bwarchive.com/#/article/9360))
