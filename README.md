@@ -6,7 +6,7 @@ swoopyarrows.js
 
 Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Each has x and y accessors and a couple other options. 
 
-**The idea is that you could pass an array of three points and it'd go through all three, but that's not yet reliably implemented here and you can imagine different ways of doing it; I'd just draw arrows between every consecutive pair, but you can also imagine, like, fitting the swoop through three points with non-constant curvature but no kinks, anyway.**
+**TODO: The idea is that you could pass an array of three points and it'd go through all three, but that's not yet reliably implemented here and you can imagine different ways of doing it; I'd just draw arrows between every consecutive pair, but you can also imagine, like, fitting the swoop through three points with non-constant curvature but no kinks, anyway.**
 
 ## swoopyArrow
 
