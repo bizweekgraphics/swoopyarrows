@@ -37,7 +37,7 @@ svg.append("path.arrow-connector")
   .attr("d", loopy);
 ```
 
-## kookyArrows
+## kookyArrow
 
 ```javascript
 var kooky = d3.svg.kooky()
