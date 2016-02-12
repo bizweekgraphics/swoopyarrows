@@ -1,55 +1,58 @@
 swoopyarrows.js
 ===============
 
-<img src="https://photos-5.dropbox.com/t/0/AAB-T8AE7ycEkctV59JJnFiJgLlXOTr5sR01VwUkOa-xgQ/12/13934821/png/1024x768/3/1404882000/0/2/Screenshot%202014-07-08%2023.41.11.png/-IQdxTWdCmUryLzr4b35gaI_0onhwrENUMYVI11oMjk" width="150" align="right"> 
-
 > Out of the crooked timber of JavaScript, no straight arrow was ever made.  
 *— Immanuel Kant*
 
-Finally an open source project to match the scope of our ambition! **swoopyarrows.js** makes swoopy arrows between things. It currently depends on D3 and returns a closure vaguely akin to the [d3.svg.axis()](https://github.com/mbostock/d3/wiki/SVG-Axes#wiki-axis) object, except sloppier and more confused. Example:
-```javascript 
-// set up new arrow
-swoop = swoopyArrow()
-  .from(d3.select("rect"))
-  .to([300,400])
-  .degrees(90)
-  .clockwise(true);
+Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Each has x and y accessors and a couple other options. 
 
-// draw sample arrow
-var svg = d3.select("svg").call(swoop);
+**The idea is that you could pass an array of three points and it'd go through all three, but that's not yet reliably implemented here and you can imagine different ways of doing it; I'd just draw arrows between every consecutive pair, but you can also imagine, like, fitting the swoop through three points with non-constant curvature but no kinks, anyway.**
+
+## swoopyArrow
+
+```javascript
+var swoopy = d3.svg.swoopy()
+  .angle(Math.PI/4)
+  .x(ƒ(0))
+  .y(ƒ(1));
+
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[100,200],[300,400]])
+  .attr("d", swoopy);
 ```
----
-<a href="#swoopyArrow" name="swoopyArrow">#</a> **swoopyArrow**()
 
-Create a new default swoopy arrow object (call it, say, arrow), which in turn has the below functions.
+## loopyArrow
 
-<a href="#arrow" name="arrow">#</a> **arrow**(*selection*)
+```javascript
+var loopy = d3.svg.loopy()
+  .steps(30)
+  .radius(20)
+  .x(ƒ(0))
+  .y(ƒ(1));
 
-Apply the arrow to a selection, aka append it. Selection must be an SVG or G element.
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[400,600],[800,100]])
+  .attr("d", loopy);
+```
 
-<a href="#from" name="from">#</a> arrow.**from**([*element*])  
-<a href="#to" name="to">#</a> arrow.**to**([*element*])
+## kookyArrows
 
-Get or set where to draw the arrow from and to, in any of four forms (in any mix):
-  - a DOM element:            `document.getElementById("hed")`
-  - a jQuery element:         `$("#hed")`
-  - a D3 element:             `d3.select("#hed")`
-  - a coordinate array [x,y]: `[100,200]`
+```javascript
+var kooky = d3.svg.kooky()
+  .steps(5)
+  .deviation(100)
+  .x(ƒ(0))
+  .y(ƒ(1));
 
-<a href="#degrees" name="degrees">#</a> arrow.**degrees**([*degrees*])
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[1000,200],[700,600]])
+  .attr("d", kooky);
+```
 
-Get or set the angle which the arc of the arrow will subtend.
-  - 90 for a gentle arc, 180 for a bigger swoop.
-  - Beyond 180, it gets gentler again, because of the way SVG computes arc.
-  - Pass 0 or 360 for a straight arrow.
-
-<a href="#clockwise" name="clockwise">#</a> arrow.**clockwise**([*boolean*]) 
-
-Get or set boolean determining whether arrow will swoop clockwise (true) or counterclockwise (false).
-
----
-
-Welp, that's it for now! Feel free to check out our many [issues](https://github.com/bizweekgraphics/swoopyarrows/issues) and [laugh in my face](https://twitter.com/tophtucker). There must be fundamentally better ways to do this, and I'll get there. Maybe. With your help!
+----
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*

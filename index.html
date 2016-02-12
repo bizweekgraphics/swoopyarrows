@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+
+<style>
+
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+h1, h2 {
+  margin: 2em;
+}
+
+path.arrow-connector, #arrowhead {
+  fill: none;
+  stroke: black;
+}
+
+</style>
+
+<body>
+    
+  <h1>Swoopy Arrows</h1>
+  <h3>a bizweekgraphics family</h3>
+
+  <h2 class="swoopy">Swoopy</h2>
+
+  <h2 class="loopy">Loopy</h2>
+
+  <h2 class="kooky">Kooky</h2>
+
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
+<script src="//cdn.rawgit.com/gka/d3-jetpack/master/d3-jetpack.js" charset="utf-8"></script>
+
+<script src="swoopyArrow.js" charset="utf-8"></script>
+<script src="loopyArrow.js" charset="utf-8"></script>
+<script src="kookyArrow.js" charset="utf-8"></script>
+
+<script>
+
+var swoopy = d3.svg.swoopy()
+  .angle(Math.PI/4)
+  .x(ƒ(0))
+  .y(ƒ(1));
+
+var loopy = d3.svg.loopy()
+  .steps(30)
+  .radius(20)
+  .x(ƒ(0))
+  .y(ƒ(1));
+
+var kooky = d3.svg.kooky()
+  .steps(5)
+  .deviation(100)
+  .x(ƒ(0))
+  .y(ƒ(1));
+
+// set up container
+  
+var svg = d3.select("body").append("svg")
+  .attr("xmlns", "http://www.w3.org/2000/svg")
+  .classed("arrow-connector-container", true)
+  .style("position", "absolute")
+  .style("top", "0")
+  .style("left", "0")
+  .style("width", "100%")
+  .style("height", "100%")
+  .style("overflow", "visible")
+  .style("pointer-events", "none");
+
+// arrowhead def
+svg.append('defs')
+  .append("marker")
+    .attr("id", "arrowhead")
+    .attr("viewBox", "-10 -10 20 20")
+    .attr("refX", 0)
+    .attr("refY", 0)
+    .attr("markerWidth", 20)
+    .attr("markerHeight", 20)
+    .attr("stroke-width", 1)
+    .attr("orient", "auto")
+  .append("polyline")
+    .attr("stroke-linejoin", "bevel")
+    .attr("points", "-6.75,-6.75 0,0 -6.75,6.75");
+
+// draw arrows
+
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[100,200],[300,400]])
+  .attr("d", swoopy);
+
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[400,600],[800,100]])
+  .attr("d", loopy);
+
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum([[1000,200],[700,600]])
+  .attr("d", kooky);
+
+</script>
+
+</html>
