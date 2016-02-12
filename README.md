@@ -65,7 +65,9 @@ Some questions:
 - How to handle svg markers. should defs be done in js? should we bundle a bunch of Adobe Illustrator-style markers for convenience?
 - Do we just want to pass in an array of points, or offer any convenience functions for handling connecting bounding boxes or converting between coordinate systems or whatever?
 - Does passing in an array of two points make sense? i feel like it's simpler that way than having "from" and "to" accessors
-- Should the whole thing actually just be a d3 interpolator that you pass to d3.line or w/e???
+- Should the whole thing actually just be a d3 curve factor that you pass to d3.line or w/e???
+  - https://github.com/d3/d3-shape#curves
+  - https://github.com/d3/d3-shape#custom-curves
 
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
