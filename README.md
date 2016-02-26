@@ -87,6 +87,7 @@ svg.append("path")
 - Handle passing in more than two points (go through all three? choose the closest two?)
 - Put together a bunch of Adobe Illustrator-style SVG markers
 - The whole thing should just be a [d3-shape custom curve](https://github.com/d3/d3-shape#custom-curves) module
+- [Add droopy catenaries](https://github.com/bizweekgraphics/swoopyarrows/issues/25)
 
 ----
 
