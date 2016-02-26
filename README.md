@@ -84,13 +84,9 @@ svg.append("path")
 
 ## To-do
 
-- The idea is that you could pass an array of three points and it'd go through all three, but that's not yet reliably implemented here and you can imagine different ways of doing it; I'd just draw arrows between every consecutive pair, but you can also imagine, like, fitting the swoop through three points with non-constant curvature but no kinks, anyway.
-- How to handle svg markers. should defs be done in js? should we bundle a bunch of Adobe Illustrator-style markers for convenience?
-- Do we just want to pass in an array of points, or offer any convenience functions for handling connecting bounding boxes or converting between coordinate systems or whatever?
-- Does passing in an array of two points make sense? i feel like it's simpler that way than having "from" and "to" accessors
-- Should the whole thing actually just be a d3 curve factor that you pass to d3.line or w/e???
-  - https://github.com/d3/d3-shape#curves
-  - https://github.com/d3/d3-shape#custom-curves
+- Handle passing in more than two points (go through all three? choose the closest two?)
+- Put together a bunch of Adobe Illustrator-style SVG markers
+- The whole thing should just be a [d3-shape custom curve](https://github.com/d3/d3-shape#custom-curves) module
 
 ----
 
