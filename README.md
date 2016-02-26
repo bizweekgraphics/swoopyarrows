@@ -6,9 +6,11 @@ swoopyarrows.js
 
 Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like `d3.svg.line`; the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has x and y accessors and a couple other options.
 
+[Demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html).
+
 The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
 
-This is B.Y.O. SVG markers. We typically use this simple arrowhead:
+Bring your own SVG markers. We typically use this simple arrowhead:
 
 ```
 <marker id="arrowhead" viewBox="-10 -10 20 20" refX="0" refY="0" markerWidth="20" markerHeight="20" stroke-width="1" orient="auto"><polyline stroke-linejoin="bevel" points="-6.75,-6.75 0,0 -6.75,6.75"></polyline></marker>
