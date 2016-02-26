@@ -263,23 +263,18 @@ function getClosest(fromCandidates, toCandidates) {
 // ANOTHER ADVANCED EXAMPLE! //
 ///////////////////////////////
 
-var center = [window.innerWidth/2, window.innerHeight/2];
-var subtend = Math.PI / 4;
 var speed = .001;
-var swarmy = swoopyArrow()
-  .angle(subtend);
-
+var subtend = Math.PI / 4;
+var swarmy = swoopyArrow().angle(subtend);
 var arrows = d3.range(100).map(function(d) {
-  var r = Math.random() * Math.max(window.innerHeight, window.innerWidth);
-  var angle = Math.random() * Math.PI * 2;
   return {
-    'r': r,
-    'angle': angle
+    'r': Math.random() * Math.max(window.innerHeight, window.innerWidth),
+    'angle': Math.random() * Math.PI * 2
   }
 });
 
 var g = svg.append('g.swarm')
-  .attr('transform', 'translate('+center[0]+','+center[1]+')');
+  .attr('transform', 'translate(' + window.innerWidth/2 + ',' + window.innerHeight/2 + ')');
 
 var swarmyArrows = g.selectAll('path.arrow.light')
   .data(arrows)
@@ -290,15 +285,15 @@ var swarmyArrows = g.selectAll('path.arrow.light')
 d3.timer(function(t) {
   swarmyArrows.each(function(d) {
     d.points = [
-      [d.r*Math.cos(d.angle + t*speed),d.r*Math.sin(d.angle + t*speed)],
-      [d.r*Math.cos(d.angle + t*speed + subtend),d.r*Math.sin(d.angle + t*speed + subtend)]
+      [d.r*Math.cos(d.angle+t*speed),         d.r*Math.sin(d.angle+t*speed)],
+      [d.r*Math.cos(d.angle+t*speed+subtend), d.r*Math.sin(d.angle+t*speed+subtend)]
     ]
   }).attr("d", function(d) { return swarmy(d.points); });
-})
+});
 
 d3.select('body').on('mousemove', function() {
-  g.attr('transform', 'translate('+d3.mouse(this)[0]+','+d3.mouse(this)[1]+')');
-})
+  g.attr('transform', 'translate(' + d3.mouse(this)[0] + ',' + d3.mouse(this)[1] + ')');
+});
 
 </script>
 
