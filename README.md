@@ -6,9 +6,7 @@ swoopyarrows.js
 
 Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like `d3.svg.line`; the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has x and y accessors and a couple other options.
 
-[Demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html).
-
-The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
+[Demo here](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
 
 Bring your own SVG markers. We typically use this simple arrowhead:
 
@@ -18,7 +16,7 @@ Bring your own SVG markers. We typically use this simple arrowhead:
 
 ## swoopyArrow
 
-Connect points with circular arcs. The classic.
+Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between 0 (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
 
 ```javascript
 var swoopy = swoopyArrow()
@@ -26,7 +24,7 @@ var swoopy = swoopyArrow()
   .x(function(d) { return d[0]; })
   .y(function(d) { return d[1]; });
 
-svg.append("path.arrow-connector")
+svg.append("path")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[100,200],[300,400]])
   .attr("d", swoopy);
@@ -34,7 +32,7 @@ svg.append("path.arrow-connector")
 
 ## loopyArrow
 
-Like a coiled telephone cord. Radius and coiling of coils configurable, though it might make more intuitive sense to parameterize its behavior differently.
+Like a coiled telephone cord. Set the radius of the loop with `radius`; increase `steps` to add more coils — although it's only _proportionate_ to the number of loops, not equal to, because I am bad at math and lazy.
 
 ```javascript
 var loopy = loopyArrow()
@@ -43,7 +41,7 @@ var loopy = loopyArrow()
   .x(function(d) { return d[0]; })
   .y(function(d) { return d[1]; });
 
-svg.append("path.arrow-connector")
+svg.append("path")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[400,600],[800,100]])
   .attr("d", loopy);
@@ -51,7 +49,7 @@ svg.append("path.arrow-connector")
 
 ## kookyArrow
 
-Follows a random path between two points. :)
+Follows a random path between two points. Increase `steps` to add more kinks; increase `deviation` to make the kinks deviate more from the path.
 
 ```javascript
 var kooky = kookyArrow()
@@ -60,7 +58,7 @@ var kooky = kookyArrow()
   .x(function(d) { return d[0]; })
   .y(function(d) { return d[1]; });
 
-svg.append("path.arrow-connector")
+svg.append("path")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[1000,200],[700,600]])
   .attr("d", kooky);
@@ -76,7 +74,7 @@ var swoopBetweenElements = swoopyArrow()
   .x(function(d) { return d.offsetLeft; })
   .y(function(d) { return d.offsetTop; });
 
-svg.append("path.arrow-connector")
+svg.append("path")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([document.querySelector('h1'), document.querySelector('h2')])
   .attr("d", swoopBetweenElements);
