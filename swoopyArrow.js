@@ -1,4 +1,4 @@
-d3.svg.swoopy = function() {
+function swoopyArrow() {
 
   var angle = Math.PI,
       clockwise = true,

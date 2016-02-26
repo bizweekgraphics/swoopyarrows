@@ -1,4 +1,4 @@
-d3.svg.loopy = function() {
+function loopyArrow() {
 
   var steps = 30,
       radius = 20,

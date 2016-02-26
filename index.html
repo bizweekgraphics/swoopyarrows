@@ -36,7 +36,6 @@ path.arrow-connector, #arrowhead {
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" charset="utf-8"></script>
 <script src="//cdn.rawgit.com/gka/d3-jetpack/master/d3-jetpack.js" charset="utf-8"></script>
 
 <script src="swoopyArrow.js" charset="utf-8"></script>
@@ -45,25 +44,30 @@ path.arrow-connector, #arrowhead {
 
 <script>
 
-var swoopy = d3.svg.swoopy()
+/////////////////////
+// SIMPLE EXAMPLE! //
+/////////////////////
+
+// Define some arrows
+
+var swoopy = swoopyArrow()
   .angle(Math.PI/4)
   .x(ƒ(0))
   .y(ƒ(1));
 
-var loopy = d3.svg.loopy()
+var loopy = loopyArrow()
   .steps(30)
   .radius(20)
   .x(ƒ(0))
   .y(ƒ(1));
 
-var kooky = d3.svg.kooky()
+var kooky = kookyArrow()
   .steps(5)
   .deviation(100)
   .x(ƒ(0))
   .y(ƒ(1));
 
-// set up container
-  
+// Set up container
 var svg = d3.select("body").append("svg")
   .attr("xmlns", "http://www.w3.org/2000/svg")
   .classed("arrow-connector-container", true)
@@ -75,7 +79,7 @@ var svg = d3.select("body").append("svg")
   .style("overflow", "visible")
   .style("pointer-events", "none");
 
-// arrowhead def
+// Define simple arrowhead marker
 svg.append('defs')
   .append("marker")
     .attr("id", "arrowhead")
@@ -90,7 +94,7 @@ svg.append('defs')
     .attr("stroke-linejoin", "bevel")
     .attr("points", "-6.75,-6.75 0,0 -6.75,6.75");
 
-// draw arrows
+// Draw some arrows!
 
 svg.append("path.arrow-connector")
   .attr('marker-end', 'url(#arrowhead)')
@@ -106,6 +110,85 @@ svg.append("path.arrow-connector")
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[1000,200],[700,600]])
   .attr("d", kooky);
+
+///////////////////////
+// ADVANCED EXAMPLE! //
+///////////////////////
+
+// Draw a swoopy arrow between two elements, 
+// snapping to the nearest corners or edge midpoints on their bounding boxes.
+
+// Find nearest two points
+var fromElement = d3.select('h1').node();
+var toElement = d3.select('h2').node();
+var fromCandidates = [].concat(getCorners(fromElement), getEdgeMidpoints(fromElement));
+var toCandidates = [].concat(getCorners(toElement), getEdgeMidpoints(toElement));
+var points = getClosest(fromCandidates, toCandidates);
+
+// Draw the arrow, with a transition drawing animation
+svg.append("path.arrow-connector")
+  .attr('marker-end', 'url(#arrowhead)')
+  .datum(points)
+  .attr("d", swoopy)
+  .style('opacity', 0)
+  .style('stroke-dasharray', function() { return this.getTotalLength(); })
+  .style('stroke-dashoffset', function() { return this.getTotalLength(); })
+.transition()
+  .duration(2000)
+  .style('opacity', 1)
+  .style('stroke-dashoffset', 0);
+
+// Returns four points at the corners of an element
+function getCorners(element) {
+  var box = element.getBoundingClientRect();
+  var corners = [
+    ['left','top'],
+    ['left','bottom'],
+    ['right','top'],
+    ['right','bottom']
+  ];
+  return corners.map(function(corner) {
+    return [
+      box[corner[0]] + window.pageXOffset,
+      box[corner[1]] + window.pageYOffset
+    ];
+  });
+}
+
+// Returns four points at the midpoints of the edges of an element
+function getEdgeMidpoints(element) {
+  var box = element.getBoundingClientRect();
+  var edges = [
+    [box.left, (box.top + box.bottom) / 2],
+    [box.right, (box.top + box.bottom) / 2],
+    [(box.left + box.right) / 2, box.top],
+    [(box.left + box.right) / 2, box.bottom]
+  ];
+  edges.forEach(function(edge) {
+    edge.x += window.pageXOffset;
+    edge.y += window.pageYOffset;
+  });
+  return edges;
+}
+
+// Given two sets of points, find the closest pair
+function getClosest(fromCandidates, toCandidates) {
+  var fromClosest, toClosest, shortestDistance;
+  fromCandidates.forEach(function(from) {
+    toCandidates.forEach(function(to) {
+      var thisDistance = hypotenuse( to[0]-from[0], to[1]-from[1] );
+      if(!shortestDistance || thisDistance < shortestDistance) {
+        shortestDistance = thisDistance;
+        fromClosest = from;
+        toClosest = to;
+      }
+    });
+  });
+  return [fromClosest,toClosest];
+  function hypotenuse(a, b) {
+    return Math.sqrt( Math.pow(a,2) + Math.pow(b,2) );
+  }
+}
 
 </script>
 

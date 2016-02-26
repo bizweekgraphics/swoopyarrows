@@ -1,4 +1,4 @@
-d3.svg.kooky = function() {
+function kookyArrow() {
 
   var steps = 5,
       mean = 0,
