@@ -4,7 +4,7 @@ swoopyarrows.js
 > Out of the crooked timber of JavaScript, no straight arrow was ever made.  
 *— Immanuel Kant*
 
-Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like `d3.svg.line`; the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has x and y accessors and a couple other options.
+Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like [`d3.svg.line`](https://github.com/mbostock/d3/wiki/SVG-Shapes#line); the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has `x` and `y` accessors and a couple other options.
 
 [Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrows.js), [demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). 
 
@@ -18,7 +18,7 @@ Bring your own SVG markers. We typically use this simple arrowhead:
 
 ## swoopyArrow
 
-[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrow.js). Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between 0 (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrow.js). Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between `0` (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
 
 ```javascript
 var swoopy = swoopyArrow()
@@ -68,7 +68,7 @@ svg.append("path")
 
 ----
 
-For an idea of how you might use the x and y accessors — you could set them to get the offsetLeft and offsetTop of DOM elements, so you can just pass an array of two DOM elements and generate an arrow between them:
+For an idea of how you might use the `x` and `y` accessors — you could set them to get the `offsetLeft` and `offsetTop` of DOM elements, so you can just pass an array of two DOM elements and generate an arrow between them:
 
 ```javascript
 var swoopBetweenElements = swoopyArrow()
@@ -96,4 +96,4 @@ svg.append("path")
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
 
-([see also](http://bwarchive.com/#/article/9360))
+![Prior art](https://raw.githubusercontent.com/bizweekgraphics/swoopyarrows/master/priorart.jpg)
