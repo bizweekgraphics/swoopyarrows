@@ -96,4 +96,4 @@ svg.append("path")
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
 
-([see also](http://bwarchive.com/#/article/9360))
+![Prior art](https://raw.githubusercontent.com/bizweekgraphics/swoopyarrows/master/priorart.jpg)
