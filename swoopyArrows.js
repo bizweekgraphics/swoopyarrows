@@ -143,7 +143,8 @@ function loopyArrow() {
 
   return render;
 
-}function kookyArrow() {
+}
+function kookyArrow() {
 
   var steps = 5,
       mean = 0,
