@@ -4,7 +4,7 @@ swoopyarrows.js
 > Out of the crooked timber of JavaScript, no straight arrow was ever made.  
 *— Immanuel Kant*
 
-Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like `d3.svg.line`; the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has x and y accessors and a couple other options.
+Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like [`d3.svg.line`](https://github.com/mbostock/d3/wiki/SVG-Shapes#line); the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has `x` and `y` accessors and a couple other options.
 
 [Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrows.js), [demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). 
 
@@ -68,7 +68,7 @@ svg.append("path")
 
 ----
 
-For an idea of how you might use the x and y accessors — you could set them to get the offsetLeft and offsetTop of DOM elements, so you can just pass an array of two DOM elements and generate an arrow between them:
+For an idea of how you might use the `x` and `y` accessors — you could set them to get the `offsetLeft` and `offsetTop` of DOM elements, so you can just pass an array of two DOM elements and generate an arrow between them:
 
 ```javascript
 var swoopBetweenElements = swoopyArrow()
