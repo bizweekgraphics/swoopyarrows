@@ -92,6 +92,8 @@ svg.append("path.arrow-connector")
   - https://github.com/d3/d3-shape#curves
   - https://github.com/d3/d3-shape#custom-curves
 
+----
+
 > Swoopy arrows have been in use since Egyptian hieroglyphics. They belong to [no one](https://github.com/bizweekgraphics/swoopyarrows/blob/master/LICENSE) ↪↺↷⟲⤣⤥⤴⤵⤶⤷⤹⤳⤻⤿⤺  
 — *[Jennifer Daniel](https://twitter.com/jenniferdaniel/status/464517373740204032), patron saint*
 
