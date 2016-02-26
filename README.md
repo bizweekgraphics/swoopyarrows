@@ -6,7 +6,9 @@ swoopyarrows.js
 
 Finally an open source project to match the scope of our ambition! A family of three path generators for making nice fun arrows. Use it more or less like `d3.svg.line`; the easiest thing is to just pass an array of two points, like `[[0,0],[10,30]]`. Each has x and y accessors and a couple other options.
 
-[Demo here](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrows.js), [demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). 
+
+The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
 
 Bring your own SVG markers. We typically use this simple arrowhead:
 
@@ -16,7 +18,7 @@ Bring your own SVG markers. We typically use this simple arrowhead:
 
 ## swoopyArrow
 
-Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between 0 (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrow.js). Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between 0 (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
 
 ```javascript
 var swoopy = swoopyArrow()
@@ -32,7 +34,7 @@ svg.append("path")
 
 ## loopyArrow
 
-Like a coiled telephone cord. Set the radius of the loop with `radius`; increase `steps` to add more coils — although it's only _proportionate_ to the number of loops, not equal to, because I am bad at math and lazy.
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/loopyArrow.js). Like a coiled telephone cord. Set the radius of the loop with `radius`; increase `steps` to add more coils — although it's only _proportionate_ to the number of loops, not equal to, because I am bad at math and lazy.
 
 ```javascript
 var loopy = loopyArrow()
@@ -49,7 +51,7 @@ svg.append("path")
 
 ## kookyArrow
 
-Follows a random path between two points. Increase `steps` to add more kinks; increase `deviation` to make the kinks deviate more from the path.
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/kookyArrow.js). Follows a random path between two points. Increase `steps` to add more kinks; increase `deviation` to make the kinks deviate more from the path.
 
 ```javascript
 var kooky = kookyArrow()
@@ -84,13 +86,10 @@ svg.append("path")
 
 ## To-do
 
-- The idea is that you could pass an array of three points and it'd go through all three, but that's not yet reliably implemented here and you can imagine different ways of doing it; I'd just draw arrows between every consecutive pair, but you can also imagine, like, fitting the swoop through three points with non-constant curvature but no kinks, anyway.
-- How to handle svg markers. should defs be done in js? should we bundle a bunch of Adobe Illustrator-style markers for convenience?
-- Do we just want to pass in an array of points, or offer any convenience functions for handling connecting bounding boxes or converting between coordinate systems or whatever?
-- Does passing in an array of two points make sense? i feel like it's simpler that way than having "from" and "to" accessors
-- Should the whole thing actually just be a d3 curve factor that you pass to d3.line or w/e???
-  - https://github.com/d3/d3-shape#curves
-  - https://github.com/d3/d3-shape#custom-curves
+- Handle passing in more than two points (go through all three? choose the closest two?)
+- Put together a bunch of Adobe Illustrator-style SVG markers
+- The whole thing should just be a [d3-shape custom curve](https://github.com/d3/d3-shape#custom-curves) module
+- [Add droopy catenaries](https://github.com/bizweekgraphics/swoopyarrows/issues/25)
 
 ----
 
