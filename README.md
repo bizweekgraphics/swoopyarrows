@@ -18,7 +18,7 @@ Bring your own SVG markers. We typically use this simple arrowhead:
 
 ## swoopyArrow
 
-[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrow.js). Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between 0 (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
+[Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrow.js). Connect points with circular arcs. The classic. Set `angle` to the angle the arrow should subtend, in radians, between `0` (basically straight) and `Math.PI` (a semicircle, 180º). It's not currently possible to subtend more than that.
 
 ```javascript
 var swoopy = swoopyArrow()
