@@ -8,7 +8,7 @@ Finally an open source project to match the scope of our ambition! A family of t
 
 [Download](https://github.com/bizweekgraphics/swoopyarrows/raw/master/swoopyArrows.js), [demo](http://www.bizweekgraphics.com/swoopyarrows/), [demo source](https://github.com/bizweekgraphics/swoopyarrows/blob/master/index.html). 
 
-The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)!
+The only dependency is [d3 v3](http://d3js.org). But it goes great with [d3-jetpack](https://github.com/gka/d3-jetpack)! If you’re trying to annotate a bunch of things, you may also have more luck with Adam Pearce’s [swoopyDrag](http://1wheel.github.io/swoopy-drag/). 
 
 Bring your own SVG markers. We typically use this simple arrowhead:
 
