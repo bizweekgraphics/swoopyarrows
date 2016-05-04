@@ -1,4 +1,6 @@
-function swoopyArrow() {
+"use strict";
+
+module.exports = function() {
 
   var angle = Math.PI,
       clockwise = true,

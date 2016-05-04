@@ -1,0 +1,28 @@
+{
+  "name": "swoopyarrows",
+  "version": "0.3.0",
+  "description": "swoopyarrows makes swoopy arrows between things",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bizweekgraphics/swoopyarrows.git"
+  },
+  "keywords": [
+    "d3",
+    "arrows",
+    "paths",
+    "svg"
+  ],
+  "author": "Toph Tucker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bizweekgraphics/swoopyarrows/issues"
+  },
+  "homepage": "https://github.com/bizweekgraphics/swoopyarrows#readme",
+  "dependencies": {
+    "d3": "^3.5.16"
+  }
+}

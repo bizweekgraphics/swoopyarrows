@@ -1,8 +1,9 @@
-function kookyArrow() {
+"use strict";
 
-  var steps = 5,
-      mean = 0,
-      deviation = 100,
+module.exports = function() {
+
+  var steps = 30,
+      radius = 20,
       interpolate = 'basis',
       xValue = function(d) { return d[0]; },
       yValue = function(d) { return d[1]; };
@@ -15,7 +16,6 @@ function kookyArrow() {
       return [xValue.call(data, d, i), yValue.call(data, d, i)];
     });
 
-    var rng = d3.random.normal(mean, deviation);
     var line = d3.svg.line().interpolate(interpolate);
 
     var points = [];
@@ -28,12 +28,12 @@ function kookyArrow() {
         var cy = d0[1] + (numerator/steps) * (d1[1]-d0[1]);
 
         if(numerator < steps-1) {
-          cx += rng();
-          cy += rng();
+          cx += radius * Math.sin(numerator);
+          cy += radius * Math.cos(numerator);
         }
 
-        points.push([cx, cy])
-      })
+        points.push([cx, cy]);
+      });
     });
     points.push(data[data.length-1]);
 
@@ -47,9 +47,9 @@ function kookyArrow() {
     return render;
   }
 
-  render.deviation = function(_) {
-    if (!arguments.length) return deviation;
-    deviation = _;
+  render.radius = function(_) {
+    if (!arguments.length) return radius;
+    radius = _;
     return render;
   }
 

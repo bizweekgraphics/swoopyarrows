@@ -94,15 +94,9 @@ a {
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-<script src="//cdn.rawgit.com/gka/d3-jetpack/master/d3-jetpack.js" charset="utf-8"></script>
 
 <!-- Bundled version -->
-<!-- <script src="swoopyArrows.js" charset="utf-8"></script> -->
-
-<!-- Individual sources -->
-<script src="swoopyArrow.js" charset="utf-8"></script>
-<script src="loopyArrow.js" charset="utf-8"></script>
-<script src="kookyArrow.js" charset="utf-8"></script>
+<script src="swoopyarrows.js" charset="utf-8"></script>
 
 <script>
 
@@ -112,22 +106,22 @@ a {
 
 // Define some arrows
 
-var swoopy = swoopyArrow()
+var swoopy = swoopyarrows.swoopy()
   .angle(Math.PI/4)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(function(d) { return d[0]; })
+  .y(function(d) { return d[1]; });
 
-var loopy = loopyArrow()
+var loopy = swoopyarrows.loopy()
   .steps(44)
   .radius(25)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(function(d) { return d[0]; })
+  .y(function(d) { return d[1]; });
 
-var kooky = kookyArrow()
+var kooky = swoopyarrows.kooky()
   .steps(5)
   .deviation(100)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(function(d) { return d[0]; })
+  .y(function(d) { return d[1]; });
 
 // Set up container
 var svg = d3.select("body").append("svg")
@@ -158,17 +152,20 @@ svg.append('defs')
 
 // Draw some arrows!
 
-d3.select('.swoopy svg').append("path.arrow")
+d3.select('.swoopy svg').append("path")
+  .classed('arrow', true)
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", swoopy);
 
-d3.select('.loopy svg').append("path.arrow")
+d3.select('.loopy svg').append("path")
+  .classed('arrow', true)
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", loopy);
 
-d3.select('.kooky svg').append("path.arrow")
+d3.select('.kooky svg').append("path")
+  .classed('arrow', true)
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", kooky);
@@ -194,7 +191,8 @@ var toCandidates = [].concat(getCorners(toElement), getEdgeMidpoints(toElement))
 var points = getClosest(fromCandidates, toCandidates);
 
 // Draw the arrow, with a transition drawing animation
-svg.append("path.arrow")
+svg.append("path")
+  .classed('arrow', true)
   .attr('marker-end', 'url(#arrowhead)')
   .datum(points)
   .attr("d", swoopy)
@@ -265,7 +263,7 @@ function getClosest(fromCandidates, toCandidates) {
 
 var speed = .001;
 var subtend = Math.PI / 4;
-var swarmy = swoopyArrow().angle(subtend);
+var swarmy = swoopyarrows.swoopy().angle(subtend);
 var arrows = d3.range(100).map(function(d) {
   return {
     'r': Math.random() * Math.max(window.innerHeight, window.innerWidth),
@@ -273,13 +271,16 @@ var arrows = d3.range(100).map(function(d) {
   }
 });
 
-var g = svg.append('g.swarm')
+var g = svg.append('g')
+  .classed('swarm', true)
   .attr('transform', 'translate(' + window.innerWidth/2 + ',' + window.innerHeight/2 + ')');
 
 var swarmyArrows = g.selectAll('path.arrow.light')
   .data(arrows)
   .enter()
-  .append('path.arrow.light')
+  .append('path')
+  .classed('arrow', true)
+  .classed('light', true)
   .attr('marker-end', 'url(#arrowhead)');
 
 d3.timer(function(t) {
