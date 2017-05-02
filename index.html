@@ -71,7 +71,7 @@ a {
 </style>
 
 <body>
-    
+
   <h1>Swoopy Arrows</h1>
 
   <div class="examples">
@@ -94,7 +94,6 @@ a {
 </body>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-<script src="//cdn.rawgit.com/gka/d3-jetpack/master/d3-jetpack.js" charset="utf-8"></script>
 
 <!-- Bundled version -->
 <!-- <script src="swoopyArrows.js" charset="utf-8"></script> -->
@@ -114,20 +113,20 @@ a {
 
 var swoopy = swoopyArrow()
   .angle(Math.PI/4)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d => d[0])
+  .y(d => d[1]);
 
 var loopy = loopyArrow()
   .steps(44)
   .radius(25)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d => d[0])
+  .y(d => d[1]);
 
 var kooky = kookyArrow()
   .steps(5)
   .deviation(100)
-  .x(ƒ(0))
-  .y(ƒ(1));
+  .x(d => d[0])
+  .y(d => d[1]);
 
 // Set up container
 var svg = d3.select("body").append("svg")
@@ -158,17 +157,20 @@ svg.append('defs')
 
 // Draw some arrows!
 
-d3.select('.swoopy svg').append("path.arrow")
+d3.select('.swoopy svg').append("path")
+  .attr('class', 'arrow')
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", swoopy);
 
-d3.select('.loopy svg').append("path.arrow")
+d3.select('.loopy svg').append("path")
+  .attr('class', 'arrow')
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", loopy);
 
-d3.select('.kooky svg').append("path.arrow")
+d3.select('.kooky svg').append("path")
+  .attr('class', 'arrow')
   .attr('marker-end', 'url(#arrowhead)')
   .datum([[0,0],[200,200]])
   .attr("d", kooky);
@@ -183,7 +185,7 @@ setInterval(function() {
 // ADVANCED EXAMPLE! //
 ///////////////////////
 
-// Draw a swoopy arrow between two elements, 
+// Draw a swoopy arrow between two elements,
 // snapping to the nearest corners or edge midpoints on their bounding boxes.
 
 // Find nearest two points
@@ -194,7 +196,8 @@ var toCandidates = [].concat(getCorners(toElement), getEdgeMidpoints(toElement))
 var points = getClosest(fromCandidates, toCandidates);
 
 // Draw the arrow, with a transition drawing animation
-svg.append("path.arrow")
+svg.append("path")
+  .attr('class', 'arrow')
   .attr('marker-end', 'url(#arrowhead)')
   .datum(points)
   .attr("d", swoopy)
@@ -273,13 +276,15 @@ var arrows = d3.range(100).map(function(d) {
   }
 });
 
-var g = svg.append('g.swarm')
+var g = svg.append('g')
+  .attr('class', 'swarm')
   .attr('transform', 'translate(' + window.innerWidth/2 + ',' + window.innerHeight/2 + ')');
 
 var swarmyArrows = g.selectAll('path.arrow.light')
   .data(arrows)
   .enter()
-  .append('path.arrow.light')
+  .append('path')
+  .attr('class', 'arrow light')
   .attr('marker-end', 'url(#arrowhead)');
 
 d3.timer(function(t) {
